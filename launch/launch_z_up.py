@@ -5,6 +5,8 @@ import os
 from ament_index_python.packages import get_package_share_directory
 
 def generate_launch_description():
+    log_level = "warn"
+
     ld = LaunchDescription()
     #Create the NatNet client node
     config = os.path.join(
@@ -33,20 +35,20 @@ def generate_launch_description():
         arguments=['--ros-args', '--log-level', log_level]
     )
     #Create the inverse kinematics node
-    config = os.path.join(
-        get_package_share_directory('mocap_optitrack_inv_kin'),
-        'config',
-        'inverse_kinematics.yaml'
-    )
-    inverse_kinematics = Node(
-        package='mocap_optitrack_inv_kin',
-        executable='mocap_optitrack_inv_kin',
-        name='inverse_kinematics',
-        parameters = [config],
-        arguments=['--ros-args', '--log-level', log_level]
-    )
+    # config = os.path.join(
+    #     get_package_share_directory('mocap_optitrack_inv_kin'),
+    #     'config',
+    #     'inverse_kinematics.yaml'
+    # )
+    # inverse_kinematics = Node(
+    #     package='mocap_optitrack_inv_kin',
+    #     executable='mocap_optitrack_inv_kin',
+    #     name='inverse_kinematics',
+    #     parameters = [config],
+    #     arguments=['--ros-args', '--log-level', log_level]
+    # )
     #Add the nodes to the launch description and return it
     ld.add_action(natnet_client)
     ld.add_action(world_to_base)
-    ld.add_action(inverse_kinematics)
+    # ld.add_action(inverse_kinematics)
     return ld
