@@ -22,8 +22,17 @@ find_package(mocap_optitrack_interfaces REQUIRED)
 
 #Download the NatNet SDK library
 include(FetchContent)
-fetchcontent_declare(natnet_sdk_content
-  URL https://s3.amazonaws.com/naturalpoint/software/NatNetSDKLinux/ubuntu/NatNet_SDK_4.0_ubuntu.tar
+# fetchcontent_declare(natnet_sdk_content
+#   URL https://s3.amazonaws.com/naturalpoint/software/NatNetSDKLinux/ubuntu/NatNet_SDK_4.0_ubuntu.tar
+# )
+
+# Set the path to the local tarball
+set(NATNET_SDK_TARBALL ${CMAKE_SOURCE_DIR}/../third_party/NatNet_SDK_4.0_ubuntu.tar)
+
+# Declare the content using the local tarball path
+fetchcontent_declare(
+  natnet_sdk_content
+  URL file://${NATNET_SDK_TARBALL}
 )
 fetchcontent_makeavailable(natnet_sdk_content)
 
