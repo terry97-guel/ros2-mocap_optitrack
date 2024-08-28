@@ -12,6 +12,8 @@ natnet_client:
     # make sure to deactivate the Windows Firewall and check with ping if the IP is reachable
     # Also, the IP of the correct network adapter needs to be selected in Motive
     server_address: "192.168.12.252"
+    # For Ubuntu Setup in CRL: server_address: "192.168.0.117" 
+
     # Type of the connection: 0 = multicast, 1 = unicast.
     connection_type: 0 #default value: 0
     # Multicast address of the server
