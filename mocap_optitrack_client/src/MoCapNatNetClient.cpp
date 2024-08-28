@@ -71,7 +71,7 @@ int MoCapNatNetClient::connect()
     ret = this->GetServerDescription( &g_serverDescription );
     if ( ret != ErrorCode_OK || ! g_serverDescription.HostPresent )
     {
-        RCLCPP_ERROR(this->moCapPublisher->get_logger(), "Unable to connect, exiting.\n");
+        RCLCPP_ERROR(this->moCapPublisher->get_logger(), "Unable to connect to %s, exiting.\n", g_connectParams.serverAddress);
         return 1;
     }
     //Log some information about the server
